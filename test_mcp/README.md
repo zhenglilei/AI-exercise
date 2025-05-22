@@ -10,3 +10,8 @@ Reference: [link](https://zhuanlan.zhihu.com/p/1892944764120310978)
 * Make the service as SSE MCP server
 
 Reference: [link](https://medium.com/nerd-for-tech/building-your-first-mcp-server-with-python-a-beginners-guide-b76665e2b2ff)
+
+# MCP Server: streaming-http
+* Not yet supported by Trae (2025-05-22)
+
+Reference: [link](https://pypi.org/project/fastmcp/)
