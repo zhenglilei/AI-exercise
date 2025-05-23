@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Draw a Circle</title>
+<style>
+  canvas {
+    border: 1px solid black; /* 添加边框以便看到画布区域 */
+  }
+</style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="400" height="200"></canvas>
+<p id="canvasDimensions"></p>
+
+<script>
+  // 获取 canvas 元素
+  const canvas = document.getElementById('myCanvas');
+  // 获取 2D 渲染上下文
+  const ctx = canvas.getContext('2d');
+  // Get the paragraph element
+  const dimensionsPara = document.getElementById('canvasDimensions');
+
+  // Check if context is available
+  if (ctx) {
+    // Set the circle color
+    ctx.fillStyle = 'red'; // Changed color from blue to red
+
+    // Draw the circle
+    // arc(x, y, radius, startAngle, endAngle, anticlockwise)
+    // x, y: Center coordinates
+    // radius: Radius
+    // startAngle, endAngle: Start and end angles (in radians)
+    // anticlockwise: Drawing direction (true for counter-clockwise, false for clockwise)
+    ctx.beginPath(); // Start drawing path for the circle
+    ctx.arc(200, 100, 50, 0, Math.PI * 2); // Draw a full circle, center at (200, 100), radius 50
+    ctx.fill(); // Fill the circle
+
+    // Draw the first line (black)
+    ctx.strokeStyle = 'black'; // Set line color to black
+    ctx.lineWidth = 2; // Set line width to 2 pixels
+    ctx.beginPath(); // Start drawing path for the line
+    ctx.moveTo(50, 50); // Move to the starting point (50, 50)
+    ctx.lineTo(375, 50); // Draw a line to the ending point (375, 50)
+    ctx.stroke(); // Stroke the line
+
+    // Draw the second line (green)
+    ctx.strokeStyle = 'green'; // Set line color to green
+    ctx.lineWidth = 2; // Set line width to 2 pixels (same as black line)
+    ctx.beginPath(); // Start drawing path for the new line
+    ctx.moveTo(50, 50); // Changed starting point from (49, 50) to (50, 50)
+    ctx.lineTo(49, 150); // Draw a line to the ending point (49, 150)
+    ctx.stroke(); // Stroke the line
+
+    // Draw the third line (blue)
+    ctx.strokeStyle = 'blue'; // Set line color to blue
+    ctx.lineWidth = 4; // Set line width to 4 pixels
+    ctx.beginPath(); // Start drawing path for the third line
+    ctx.moveTo(25, 100); // Move to the starting point (25, 100)
+    ctx.lineTo(100, 25); // Draw a line to the ending point (100, 25)
+    ctx.stroke(); // Stroke the line
+
+
+    // Display canvas dimensions
+    dimensionsPara.textContent = `Canvas Dimensions: ${canvas.width} x ${canvas.height}`;
+
+  } else {
+    alert('Your browser does not support Canvas!');
+  }
+</script>
+
+</body>
+</html>
