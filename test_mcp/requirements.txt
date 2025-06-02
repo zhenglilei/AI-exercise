@@ -1,6 +1,9 @@
 mcp
+mcpadapt
 fastmcp
 langchain_community
 dashscope
 langgraph
 langchain-mcp-adapters
+crewai
+crewai_tools
