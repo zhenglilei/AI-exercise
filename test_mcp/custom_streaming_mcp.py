@@ -74,6 +74,7 @@ async def get_forecast(latitude: float, longitude: float) -> str:
     points_data = await make_nws_request(points_url)
 
     if not points_data:
+        print("Unable to fetch points data.")
         return "Unable to fetch forecast data for this location."
 
     # Get the forecast URL from the points response
@@ -81,6 +82,7 @@ async def get_forecast(latitude: float, longitude: float) -> str:
     forecast_data = await make_nws_request(forecast_url)
 
     if not forecast_data:
+        print("Unable to fetch forecast data.")
         return "Unable to fetch detailed forecast."
 
     # Format the periods into a readable forecast
@@ -95,6 +97,7 @@ Forecast: {period['detailedForecast']}
 """
         forecasts.append(forecast)
 
+    print(forecasts)  # Print the forecasts to the terminal for debugging purposes
     return "\n---\n".join(forecasts)
 
 
