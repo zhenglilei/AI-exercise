@@ -1,2 +1,6 @@
 mcp
 fastmcp
+langchain_community
+dashscope
+langgraph
+langchain-mcp-adapters
