@@ -4,11 +4,8 @@ import httpx
 from fastmcp import FastMCP
 from mcp.server.fastmcp.prompts import base
 
-import uvicorn
-
-# Initialize FastMCP server for Weather tools (SSE)
+# Initialize FastMCP server for Weather tools (steamable-http)
 mcp = FastMCP("weather")
-
 # Constants
 NWS_API_BASE = "https://api.weather.gov"
 USER_AGENT = "weather-app/1.0"
@@ -104,13 +101,18 @@ Forecast: {period['detailedForecast']}
 @mcp.prompt()
 def get_initial_prompts() -> list[base.Message]:
     return [
-        base.UserMessage("You are a helpful assistant that can help with weather-related questions."),
+        base.UserMessage(
+            "You are a helpful assistant that can help with weather-related questions."),
     ]
 
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Run MCP SSE-based server')
+    parser = argparse.ArgumentParser(
+        description='Run MCP streamable-http server')
     parser.add_argument('--host', default='0.0.0.0', help='Host to bind to')
-    parser.add_argument('--port', type=int, default=8080, help='Port to listen on')
+    parser.add_argument('--port', type=int, default=8080,
+                        help='Port to listen on')
     args = parser.parse_args()
 
-    mcp.run(transport="streamable-http", host=args.host, port=args.port, path="/mcp")
+    mcp.run(transport="streamable-http",
+            host=args.host, port=args.port, path="/mcp")
